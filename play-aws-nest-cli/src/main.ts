@@ -1,10 +1,10 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { AppService } from './app.service';
+import { CommandPromptService } from './command-prompt.service';
 
 async function bootstrap() {
   const app = await NestFactory.createApplicationContext(AppModule);
-  const appService = app.get(AppService);
-  console.log(appService.getHello());
+  CommandPromptService.showCommandPrompt();
 }
 bootstrap();
