@@ -20,6 +20,7 @@ The chromium browser opens up and logins into the aws account.
 The user is presented with a command prompt
 
 Enter help 
+
 play-aws> rds
 
 typing the command rds will make the chromium browser navigate to the rds GUI at the aws console.
