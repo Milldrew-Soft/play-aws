@@ -40,8 +40,3 @@ typing the command rds drill <drill name> will print out a small description of 
 play-aws> help
 
 typing the command help will print out a list of available commands and a help.txt file that explains how to use the tool.
-
-
-
-
-
