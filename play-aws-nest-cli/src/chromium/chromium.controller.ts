@@ -1,5 +1,5 @@
 import { Controller } from '@nestjs/common';
-import { chromium, Page } from 'playwright';
+import { Browser, chromium, Page } from 'playwright';
 import { LoginHandlerService } from './login-handler.service';
 // set playwright options
 const options = {
@@ -10,14 +10,22 @@ const options = {
 export class ChromiumController {
   constructor(private loginHandlerService: LoginHandlerService) {}
   mainPage: Page;
+  browser: Browser;
   async launch() {
     this.loginHandlerService.getConfiguration();
-    // const browser = await chromium.launch(options);
-    // const context = await browser.newContext();
-    // /**
-    //  * The page that will respond to commands given by the user.
-    //  */
-    // this.mainPage = await context.newPage();
+    const browser = await chromium.launch(options);
+    const context = await browser.newContext();
+    this.browser = browser;
+
+    /**
+     * The page that will respond to commands given by the user.
+     */
+    this.mainPage = await context.newPage();
     // this.mainPage.goto('https://www.google.com');
+    this.loginHandlerService.login(this.mainPage);
+  }
+  close() {
+    this.mainPage.close();
+    this.browser.close();
   }
 }
