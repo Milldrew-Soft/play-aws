@@ -21,7 +21,6 @@ export class ChromiumController {
      * The page that will respond to commands given by the user.
      */
     this.mainPage = await context.newPage();
-    // this.mainPage.goto('https://www.google.com');
     this.loginHandlerService.login(this.mainPage);
   }
   close() {
