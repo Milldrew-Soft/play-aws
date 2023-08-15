@@ -15,6 +15,7 @@ async function bootstrap() {
     const command = commandBuffer.toString().trim();
     CommandPromptService.showCommandPrompt();
     commandHandler.main(command);
+    CommandPromptService.resetCommandPrompt();
   });
 }
 bootstrap();

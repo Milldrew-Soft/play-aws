@@ -8,4 +8,8 @@ export class CommandPromptService {
   static showCommandPrompt() {
     process.stdout.write('play-aws> ');
   }
+  static resetCommandPrompt() {
+    process.stdout.write('\r');
+    CommandPromptService.showCommandPrompt();
+  }
 }
