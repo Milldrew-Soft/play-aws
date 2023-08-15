@@ -51,6 +51,14 @@ export class LoginHandlerService {
         .click();
       await mainPage.waitForNavigation();
     } else if (this.playAwsConfig.loginType === 'root') {
+      await mainPage.getByPlaceholder('username@example.com').click();
+      await mainPage
+        .getByPlaceholder('username@example.com')
+        .fill(this.playAwsConfig.username);
+      await mainPage.getByPlaceholder('username@example.com').press('Enter');
+      await mainPage.locator('#password').click();
+      await mainPage.locator('#password').fill(this.playAwsConfig.password);
+      await mainPage.locator('#password').press('Enter');
     }
   }
 }
