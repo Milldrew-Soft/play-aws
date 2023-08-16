@@ -9,6 +9,7 @@ const options = {
 @Controller('chromium')
 export class ChromiumController {
   constructor(private loginHandlerService: LoginHandlerService) {}
+  static mainPage: Page;
   mainPage: Page;
   browser: Browser;
   async launch() {
@@ -21,6 +22,7 @@ export class ChromiumController {
      * The page that will respond to commands given by the user.
      */
     this.mainPage = await context.newPage();
+    ChromiumController.mainPage = this.mainPage;
     this.loginHandlerService.login(this.mainPage);
   }
   close() {
